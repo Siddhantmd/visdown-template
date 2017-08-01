@@ -27,18 +27,36 @@
 <body>
 
 <div id="visdown-input">  
-  # Visdown
+  # Visdown: it's here to destroy
 
   **Make visualisations using only markdown**
 
   Write visualisation using a simple declarative markup like you would write code. Just wrap it in fenced block (three backticks) and mark the language as `vis`.
 
   *Make simple static visualisations*
+  
+  ```vis
+  data:
+    url: data/notes.csv
+  mark: area
+  encoding:
+    x:
+      type: nominal
+      field: year
+      title: "Year"
+    y:
+      type: quantitative
+      field: money
+      aggregate: sum
+    color:
+      field: denom
+  width: 600
+  ```
 
   ```vis
   data:
     url: data/cars.csv
-  mark: point
+  mark: tick
   encoding:
     x:
       type: quantitative
@@ -46,6 +64,25 @@
     y:
       type: quantitative
       field: price
+  ```
+  ```vis
+  data:
+    url: data/sample.csv
+  mark: circle
+  encoding:
+    x:
+      type: nominal
+      field: area
+      axis: null
+    y:
+      type: quantitative
+      field: profit
+      axis: null
+    size:
+      value: 100
+    color:
+      field: profit
+  width: 500
   ```
 
   Visdown is based on the grammar of interactive graphic (vega-lite) which allows you to specify the visualisation including interactions in a declarative fashion.
